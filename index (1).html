@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<!--
+  ============================================================================
+  CLASSROOM EXERCISE — THIS SITE IS FICTIONAL.
+
+  The "Olympic Fog Shrew" (Sorex sonomae olympicus) does not exist. The fog
+  shrew (Sorex sonomae) is a real species of northern California and Oregon,
+  listed Least Concern, with two recognized subspecies. This site invents a
+  third. It was built as a source-evaluation exercise for a college course.
+
+  Add #reveal to this page's URL to see the instructor debrief.
+  ============================================================================
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Olympic Fog Shrew Recovery Initiative</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --black:#080b09;
+    --green:#0d2318;
+    --green-2:#12301f;
+    --white:#ffffff;
+    --paper:#f7f6f2;
+    --paper-2:#e8e7e0;
+    --dim:#8d9a8f;
+    --dim-2:#5c6a5f;
+    --disp:'Archivo',system-ui,sans-serif;
+    --serif:'Source Serif 4',Georgia,serif;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--paper);color:var(--black);font:400 18px/1.65 var(--serif);-webkit-font-smoothing:antialiased}
+  img{display:block;max-width:100%}
+  a{color:inherit}
+  a:focus-visible,button:focus-visible{outline:2px solid #fff;outline-offset:3px}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 28px}
+  .col{max-width:720px}
+
+  .eyebrow{
+    font:600 11px/1 var(--disp);letter-spacing:.24em;text-transform:uppercase;
+    margin:0 0 20px;color:var(--dim-2);
+  }
+  .on-dark .eyebrow{color:var(--dim)}
+  h1,h2,h3{font-family:var(--disp);font-weight:700;letter-spacing:-.025em;margin:0}
+  h2{font-size:clamp(30px,4.2vw,52px);line-height:1.04;margin-bottom:26px}
+  h3{font-size:24px;line-height:1.2;margin:44px 0 12px;letter-spacing:-.015em}
+  p{margin:0 0 22px}
+
+  /* ---- nav ---- */
+  nav{background:var(--black);position:sticky;top:0;z-index:60}
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:0 28px}
+  .brand{display:flex;align-items:center;gap:12px;padding:12px 0;text-decoration:none}
+  .brand img{height:42px;width:42px;border-radius:50%;flex:0 0 42px}
+  .brand b{display:block;font:700 15px/1.1 var(--disp);color:#fff;letter-spacing:-.01em}
+  .brand span{display:block;font:600 9px/1 var(--disp);letter-spacing:.22em;text-transform:uppercase;color:var(--dim);margin-top:4px}
+  nav ul{display:flex;list-style:none;margin:0;padding:0;align-items:center;flex-wrap:wrap}
+  nav ul a{
+    display:block;padding:22px 14px;color:#dcdfda;text-decoration:none;
+    font:600 11px/1 var(--disp);letter-spacing:.16em;text-transform:uppercase;
+  }
+  nav ul a:hover{color:#fff}
+  nav .pill{background:#fff;color:var(--black)!important;padding:11px 22px!important;border-radius:100px;margin-left:10px}
+  nav .pill:hover{background:var(--paper-2)}
+
+  /* ---- hero ---- */
+  .hero{position:relative;background:var(--black);min-height:92vh;display:flex;align-items:flex-end;overflow:hidden}
+  .hero .bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.62}
+  .hero::after{content:'';position:absolute;inset:0;
+    background:linear-gradient(180deg,rgba(8,11,9,.72) 0%,rgba(8,11,9,.15) 40%,rgba(8,11,9,.97) 100%)}
+  .hero .wrap{position:relative;z-index:2;padding-top:140px;padding-bottom:70px}
+  .hero .eyebrow{color:#fff;opacity:.75}
+  .hero h1{
+    font-size:clamp(40px,7.4vw,92px);line-height:.96;color:#fff;
+    max-width:14ch;letter-spacing:-.038em;margin-bottom:28px;
+  }
+  .hero p{color:#d3dad2;font-size:20px;max-width:52ch;margin-bottom:36px}
+  .cta{display:flex;gap:12px;flex-wrap:wrap}
+  .btn{
+    display:inline-block;padding:17px 38px;border-radius:100px;text-decoration:none;
+    font:600 12px/1 var(--disp);letter-spacing:.16em;text-transform:uppercase;
+    background:#fff;color:var(--black);border:1px solid #fff;cursor:pointer;
+    transition:background .18s,color .18s;
+  }
+  .btn:hover{background:var(--paper-2);border-color:var(--paper-2)}
+  .btn.ghost{background:transparent;color:#fff;border-color:rgba(255,255,255,.45)}
+  .btn.ghost:hover{background:rgba(255,255,255,.12)}
+
+  /* ---- ticker strip ---- */
+  .strip{background:var(--green);color:#e6ece6;font-size:15px}
+  .strip .wrap{display:flex;gap:14px;align-items:center;flex-wrap:wrap;padding:16px 28px}
+  .strip .tag{
+    font:700 10px/1 var(--disp);letter-spacing:.2em;text-transform:uppercase;
+    border:1px solid rgba(255,255,255,.4);padding:7px 12px;border-radius:100px;flex:0 0 auto;
+  }
+  .strip a{font-weight:600}
+
+  /* ---- counter (signature) ---- */
+  .counter{background:var(--black);color:#fff;padding:110px 0 90px;text-align:center}
+  .counter .num{
+    font:800 clamp(120px,25vw,300px)/.82 var(--disp);letter-spacing:-.055em;
+    color:#fff;margin:0;
+  }
+  .counter .cap{
+    font:600 12px/1.6 var(--disp);letter-spacing:.26em;text-transform:uppercase;
+    color:var(--dim);margin:26px auto 0;max-width:30ch;
+  }
+  .counter .sub{font-family:var(--serif);font-size:19px;color:#b9c4ba;max-width:46ch;margin:26px auto 0;letter-spacing:0;text-transform:none}
+
+  /* ---- generic sections ---- */
+  section{padding:104px 0}
+  .on-dark{background:var(--green);color:#dfe6df}
+  .on-dark h2,.on-dark h3{color:#fff}
+  .on-black{background:var(--black);color:#c9d2ca}
+  .on-black h2,.on-black h3{color:#fff}
+
+  .duo{display:flex;gap:70px;align-items:center;flex-wrap:wrap}
+  .duo > *{flex:1 1 400px;min-width:290px}
+  .duo img{width:100%;height:auto;border-radius:2px}
+
+  .round{border-radius:50%!important;aspect-ratio:1;object-fit:cover;max-width:440px;margin:0 auto}
+
+  figure{margin:0}
+  figcaption{
+    font:400 14px/1.6 var(--serif);color:var(--dim-2);margin-top:16px;
+    padding-top:14px;border-top:1px solid rgba(0,0,0,.14);
+  }
+  .on-dark figcaption,.on-black figcaption{color:var(--dim);border-top-color:rgba(255,255,255,.18)}
+
+  .bleed{position:relative;margin:0}
+  .bleed img{width:100%;height:clamp(340px,64vh,620px);object-fit:cover}
+  .bleed figcaption{max-width:1180px;margin:0 auto;padding:16px 28px 0;border-top:none}
+
+  /* ---- stats row ---- */
+  .figs{display:flex;flex-wrap:wrap;gap:0;border-top:1px solid rgba(255,255,255,.18)}
+  .figs div{flex:1 1 210px;padding:34px 26px 34px 0;border-bottom:1px solid rgba(255,255,255,.18)}
+  .figs b{display:block;font:700 54px/1 var(--disp);letter-spacing:-.04em;color:#fff}
+  .figs span{display:block;font:600 10.5px/1.5 var(--disp);letter-spacing:.2em;text-transform:uppercase;color:var(--dim);margin-top:12px}
+
+  /* ---- table ---- */
+  table{width:100%;border-collapse:collapse;font-family:var(--disp);font-size:15px;margin:32px 0}
+  caption{text-align:left;font:600 10.5px/1 var(--disp);letter-spacing:.22em;text-transform:uppercase;color:var(--dim);padding-bottom:16px}
+  th,td{padding:15px 14px 15px 0;text-align:left;border-bottom:1px solid rgba(255,255,255,.16)}
+  th{font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--dim);font-weight:600}
+  td{font-weight:500;color:#e2e8e2}
+
+  .refs{font:400 15px/1.6 var(--serif);color:var(--dim);padding-left:20px;margin:0}
+  .refs li{margin-bottom:15px}
+
+  /* ---- action list ---- */
+  .acts{border-top:1px solid rgba(255,255,255,.18);margin-top:44px}
+  .acts .row{display:flex;gap:32px;padding:32px 0;border-bottom:1px solid rgba(255,255,255,.18);flex-wrap:wrap}
+  .acts .n{font:700 13px/1 var(--disp);letter-spacing:.14em;color:var(--dim);flex:0 0 44px;padding-top:6px}
+  .acts .bd{flex:1 1 420px;min-width:260px}
+  .acts h3{margin:0 0 8px;font-size:21px}
+  .acts p{margin:0;font-size:16.5px;color:var(--dim)}
+
+  /* ---- donate ---- */
+  .give{background:var(--paper);color:var(--black);padding:104px 0}
+  .tiers{display:flex;gap:0;flex-wrap:wrap;margin:44px 0 40px;border-top:1px solid rgba(0,0,0,.15)}
+  .tiers div{flex:1 1 250px;padding:32px 30px 32px 0;border-bottom:1px solid rgba(0,0,0,.15)}
+  .tiers b{display:block;font:700 40px/1 var(--disp);letter-spacing:-.035em;margin-bottom:14px}
+  .tiers span{font-size:16px;color:var(--dim-2);line-height:1.55}
+
+  /* ---- signup ---- */
+  .signup{background:var(--green-2);color:#fff;padding:76px 0}
+  .signup p{color:var(--dim);max-width:44ch}
+  .signup .row{display:flex;gap:10px;flex-wrap:wrap;max-width:540px;margin-top:26px}
+  .signup input{
+    flex:1 1 250px;padding:16px 18px;border:1px solid rgba(255,255,255,.3);
+    background:transparent;color:#fff;border-radius:100px;font:400 16px var(--serif);
+  }
+  .signup input::placeholder{color:#7d8a7f}
+
+  /* ---- press ---- */
+  .press{background:var(--paper-2);padding:52px 0;text-align:center}
+  .press .lbl{font:600 10.5px/1 var(--disp);letter-spacing:.26em;text-transform:uppercase;color:var(--dim-2);display:block;margin-bottom:22px}
+  .press em{display:inline-block;margin:0 24px 8px;font:400 19px var(--serif);font-style:italic;color:#3f4a41}
+
+  /* ---- footer ---- */
+  footer{background:var(--black);color:var(--dim);padding:70px 0 40px;font-size:15px}
+  .footbrand{display:flex;align-items:center;gap:14px;margin-bottom:30px}
+  .footbrand img{height:58px;width:58px;border-radius:50%}
+  .footbrand b{display:block;font:700 19px/1.1 var(--disp);color:#fff}
+  .footbrand span{display:block;font:600 9.5px/1 var(--disp);letter-spacing:.22em;text-transform:uppercase;color:var(--dim);margin-top:5px}
+  .partners{border-top:1px solid rgba(255,255,255,.16);border-bottom:1px solid rgba(255,255,255,.16);padding:26px 0;margin:26px 0}
+  .partners b{display:block;font:600 10px/1 var(--disp);letter-spacing:.24em;text-transform:uppercase;color:#68766b;margin-bottom:16px}
+  .partners span{display:inline-block;margin:0 28px 8px 0;font:400 17px var(--serif);font-style:italic;color:#8b988d}
+  footer a{color:#a9b5aa}
+  .fine{font-size:13.5px;line-height:2;color:#5d6a60}
+
+  /* ---- reveal ---- */
+  #reveal{display:none;position:fixed;inset:0;z-index:9999;overflow-y:auto;background:#050807;padding:60px 22px}
+  #reveal.on{display:block}
+  #reveal .inner{max-width:800px;margin:0 auto}
+  #reveal h2{font-size:clamp(28px,4.4vw,44px);color:#fff;margin-bottom:12px}
+  #reveal .sub{color:var(--dim);font-size:17px;margin:0 0 34px;padding-bottom:26px;border-bottom:1px solid #1c2620}
+  #reveal h3{font:600 11px/1 var(--disp);letter-spacing:.24em;text-transform:uppercase;color:#7f8d81;margin:40px 0 16px}
+  #reveal ol{padding-left:22px;color:#ccd5cd;font-size:16.5px}
+  #reveal li{margin-bottom:16px;line-height:1.6}
+  #reveal b{color:#fff}
+  #reveal p{color:#ccd5cd;font-size:16.5px}
+  #reveal .close{
+    background:transparent;border:1px solid rgba(255,255,255,.4);color:#fff;
+    padding:14px 32px;border-radius:100px;cursor:pointer;
+    font:600 11px var(--disp);letter-spacing:.18em;text-transform:uppercase;margin-top:34px;
+  }
+  #reveal .close:hover{background:rgba(255,255,255,.1)}
+
+  @media (max-width:760px){
+    body{font-size:17px}
+    section,.give{padding:64px 0}
+    .counter{padding:70px 0 56px}
+    nav ul a{padding:14px 9px;font-size:10px}
+    .brand img{height:34px;width:34px;flex-basis:34px}
+    .duo{gap:36px}
+    .hero{min-height:80vh}
+  }
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+
+<nav><div class="wrap">
+  <a class="brand" href="#">
+    <img src="images/seal.webp" alt="">
+    <span><b>Olympic Fog Shrew</b><span>Recovery Initiative</span></span>
+  </a>
+  <ul>
+    <li><a href="#species">Species</a></li>
+    <li><a href="#threats">Threats</a></li>
+    <li><a href="#research">Research</a></li>
+    <li><a href="#act">Take Action</a></li>
+    <li><a href="signup.html">Field Notes</a></li>
+    <li><a class="pill" href="#give">Donate</a></li>
+  </ul>
+</div></nav>
+
+<header class="hero">
+  <img class="bg" src="images/hero.webp" alt="An Olympic fog shrew beneath wet leaf litter">
+  <div class="wrap">
+    <p class="eyebrow">Clallam County, Washington</p>
+    <h1>One dry summer from gone.</h1>
+    <p>
+      <em>Sorex sonomae olympicus</em> lives in a thin band of fog-fed riparian forest on the
+      western Olympic Peninsula. It weighs less than a AA battery and dies within four hours
+      of its last meal. For twenty-eight years our volunteers have been the only people
+      counting it.
+    </p>
+    <div class="cta">
+      <a class="btn" href="#give">Adopt a Transect</a>
+      <a class="btn ghost" href="#species">About the Shrew</a>
+    </div>
+  </div>
+</header>
+
+<div class="strip"><div class="wrap">
+  <span class="tag">Urgent</span>
+  <span>The Peninsula Salvage Harvest Amendment enters public comment September 4.
+    <a href="#act">Submit a comment before the window closes.</a></span>
+</div></div>
+
+<div class="counter">
+  <p class="num">397</p>
+  <p class="cap">Mature individuals estimated remaining</p>
+  <p class="sub">
+    That figure comes from our own transects. No agency has ever surveyed this subspecies,
+    and no one else is going to.
+  </p>
+</div>
+
+<section id="species">
+  <div class="wrap">
+    <div class="duo">
+      <div class="col">
+        <p class="eyebrow">Sorex sonomae olympicus</p>
+        <h2>A shrew that cannot survive a dry forest floor</h2>
+        <p>
+          The Olympic fog shrew is the northernmost and smallest-bodied of the fog shrews,
+          described as a distinct subspecies in 1994 on the basis of skull morphology and a
+          shortened hind foot. It remains the only known <em>Sorex sonomae</em> population
+          north of the Columbia River.
+        </p>
+        <p>
+          Adults measure 61&ndash;74 mm head-to-body with a tail of 44&ndash;59 mm and weigh
+          between 6 and 11 grams. Like all shrews it carries an extraordinary metabolic rate
+          and must feed almost continuously, taking close to its own body weight each day in
+          earthworms, beetle larvae, centipedes and slugs. A shrew that goes four hours
+          without food will die. That single fact governs everything else about its biology.
+        </p>
+      </div>
+      <figure>
+        <img class="round" src="images/species.webp" alt="Olympic fog shrew foraging in moss and needle litter">
+        <figcaption>
+          Adult female, Pysht Bottomland transect, 06:14, September 2024. Weighed 9.1 g and
+          released at the point of capture. Photograph by OFSRI field volunteer; do not
+          reproduce without written permission.
+        </figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<figure class="bleed">
+  <img src="images/nest.webp" alt="Fog shrew curled in a nest cavity within a decaying log">
+</figure>
+
+<section class="on-dark">
+  <div class="wrap">
+    <div class="col">
+      <p class="eyebrow">Why fog matters</p>
+      <h2>The moisture comes out of the air, not the sky</h2>
+      <p>
+        Between June and September the western Peninsula receives very little rain. The
+        moisture that keeps the litter layer damp condenses out of marine fog onto the canopy
+        and drips to the forest floor. Beneath intact old-growth canopy this contributes the
+        equivalent of 20&ndash;30 cm of additional precipitation in a typical year.
+      </p>
+      <p>
+        Where the canopy has been removed the fog passes overhead and the ground dries. The
+        shrew's prey base collapses within a single season, and the shrew follows it. This is
+        why the subspecies tracks canopy cover far more tightly than it tracks any other
+        variable we measure.
+      </p>
+    </div>
+    <div class="figs">
+      <div><b>397</b><span>Individuals remaining</span></div>
+      <div><b>61%</b><span>Range lost since 1970</span></div>
+      <div><b>11</b><span>Permanent transects</span></div>
+      <div><b>28</b><span>Years of monitoring</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="threats">
+  <div class="wrap"><div class="col">
+    <p class="eyebrow">Three pressures</p>
+    <h2>What is driving the decline</h2>
+
+    <h3>Salvage harvest in riparian buffers</h3>
+    <p>
+      Post-windthrow salvage logging is permitted inside stream buffers that would otherwise
+      be protected. Removing downed wood removes exactly the structure the shrew shelters and
+      forages in. Our transects at Hoko and Sekiu recorded a 74% drop in captures across the
+      two seasons following salvage entry, with no recovery after six years.
+    </p>
+
+    <h3>Declining summer fog frequency</h3>
+    <p>
+      Coastal fog days on the outer Peninsula have declined measurably over recent decades.
+      For a subspecies whose entire summer moisture budget depends on fog drip, a shortened
+      fog season is not an inconvenience. It is an extinction pressure.
+    </p>
+
+    <h3>Competition from Trowbridge's shrew</h3>
+    <p>
+      <em>Sorex trowbridgii</em>, a generalist, colonizes drier disturbed stands quickly and
+      appears to exclude the fog shrew from marginal habitat. Where the two co-occur in our
+      trapping records, fog shrew captures fall below one per hundred trap-nights.
+    </p>
+  </div></div>
+</section>
+
+<figure class="bleed">
+  <img src="images/log.webp" alt="Fog shrew crossing a moss-covered fallen log">
+  <figcaption>
+    Clallam Fork, October 2025. Captures on this transect have fallen to 0.30 per hundred
+    trap-nights, the lowest figure recorded outside of Deep Creek.
+  </figcaption>
+</figure>
+
+<section class="on-black" id="research">
+  <div class="wrap"><div class="col">
+    <p class="eyebrow">Straits Field Ecology Station &middot; 1998&ndash;present</p>
+    <h2>Our field research</h2>
+    <p>
+      OFSRI maintains eleven permanent pitfall transects across four drainages, checked twice
+      weekly from May through October by trained volunteers under the supervision of
+      Dr. Marian Osterhout, who has led the program since its founding. All captures are
+      measured, photographed and released. No specimens are retained.
+    </p>
+
+    <table>
+      <caption>Recent capture summary, selected transects</caption>
+      <thead>
+        <tr><th>Transect</th><th>Trap-nights</th><th>Captures</th><th>Per 100</th><th>Trend</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Hoko Ridge</td><td>2,840</td><td>19</td><td>0.67</td><td>Declining</td></tr>
+        <tr><td>Sekiu Headwaters</td><td>2,610</td><td>11</td><td>0.42</td><td>Declining</td></tr>
+        <tr><td>Pysht Bottomland</td><td>3,020</td><td>44</td><td>1.46</td><td>Stable</td></tr>
+        <tr><td>Clallam Fork</td><td>1,970</td><td>6</td><td>0.30</td><td>Declining</td></tr>
+        <tr><td>Deep Creek</td><td>2,455</td><td>0</td><td>0.00</td><td>Extirpated</td></tr>
+      </tbody>
+    </table>
+
+    <h3 style="font-size:15px;letter-spacing:.2em;text-transform:uppercase;margin:44px 0 18px">Selected references</h3>
+    <ol class="refs">
+      <li>Osterhout, M. &amp; Delacroix, P. (2019). Occupancy decline in a peripheral
+        <em>Sorex sonomae</em> population following riparian salvage harvest.
+        <em>Journal of Mammalogy</em>, 100(4), 1188&ndash;1201. doi:10.1093/jmammal/gyz118</li>
+      <li>Olympic Fog Shrew Recovery Initiative (2023). <em>Twenty-five years of drift-fence
+        monitoring on the western Olympic Peninsula</em>. OFSRI Technical Bulletin No. 12.
+        Port Angeles, WA.</li>
+      <li>Osterhout, M. (2021). Fog drip and small mammal persistence: a case for microclimate
+        refugia. <em>OFSRI Technical Bulletin</em> No. 9.</li>
+    </ol>
+  </div></div>
+</section>
+
+<section class="on-dark" id="act">
+  <div class="wrap"><div class="col">
+    <p class="eyebrow">Four actions</p>
+    <h2>What you can do this month</h2>
+  </div>
+  <div class="acts">
+    <div class="row"><div class="n">01</div><div class="bd">
+      <h3>Comment on the amendment</h3>
+      <p>The public window closes September 4. Two paragraphs in your own words carry more weight than a form letter.</p>
+    </div></div>
+    <div class="row"><div class="n">02</div><div class="bd">
+      <h3>Sponsor a transect</h3>
+      <p>$40 covers one volunteer's season of trap materials for a single drift fence.</p>
+    </div></div>
+    <div class="row"><div class="n">03</div><div class="bd">
+      <h3>Report a sighting</h3>
+      <p>Fog shrews are occasionally recovered by house cats. If you live west of Joyce, we want to hear from you.</p>
+    </div></div>
+    <div class="row"><div class="n">04</div><div class="bd">
+      <h3>Share this page</h3>
+      <p>Almost no coverage of this subspecies exists outside our own publications. Visibility is the constraint.</p>
+    </div></div>
+  </div>
+  </div>
+</section>
+
+<section class="give" id="give">
+  <div class="wrap"><div class="col">
+    <p class="eyebrow">Adopt a shrew</p>
+    <h2>Every transect is funded by one person</h2>
+    <p>
+      We hold no government contracts and take no corporate money. Field season runs May to
+      October, and every dollar goes to trap materials, fuel, and volunteer training.
+    </p>
+  </div>
+  <div class="tiers">
+    <div><b>$40</b><span>Sponsors one drift-fence transect for a full field season, with quarterly capture reports from your site.</span></div>
+    <div><b>$120</b><span>Funds a season of camera-trap batteries and cards across three drainages.</span></div>
+    <div><b>$500</b><span>Underwrites one volunteer training weekend, including travel for participants from outside the county.</span></div>
+  </div>
+  <a class="btn" style="background:var(--black);color:#fff;border-color:var(--black)" href="#">Donate Now</a>
+  <a class="btn ghost" style="color:var(--black);border-color:rgba(0,0,0,.4)" href="#">Sign the Petition</a>
+  </div>
+</section>
+
+<div class="signup"><div class="wrap"><div class="col">
+  <h2 style="font-size:34px;margin-bottom:14px">Field Notes</h2>
+  <p>Capture summaries, comment deadlines, and volunteer calls. Roughly six emails a year.</p>
+  <div class="row">
+    <a class="btn" href="signup.html">Subscribe to Field Notes</a>
+  </div>
+</div></div></div>
+
+<div class="press">
+  <span class="lbl">As featured in</span>
+  <em>Peninsula Regional Press</em>
+  <em>Northwest Conservation Digest</em>
+  <em>The Naturalist's Almanac</em>
+</div>
+
+<footer><div class="wrap">
+  <div class="footbrand">
+    <img src="images/seal.webp" alt="">
+    <div><b>Olympic Fog Shrew</b><span>Recovery Initiative</span></div>
+  </div>
+  <div class="partners">
+    <b>Partner organizations</b>
+    <span>Straits Field Ecology Station</span>
+    <span>Cascadia Small Mammal Working Group</span>
+    <span>Peninsula Watershed Alliance</span>
+    <span>Friends of the Outer Coast</span>
+  </div>
+  <p>Olympic Fog Shrew Recovery Initiative &middot; P.O. Box 1147, Port Angeles, WA 98362 &middot;
+     <a href="#">info@ofsri.org</a></p>
+  <p class="fine">
+    OFSRI is supported entirely by individual members and volunteers.<br>
+    Copyright &copy; 2019 Olympic Fog Shrew Recovery Initiative. All rights reserved.
+    Site last updated August 2026.<br>
+    <a href="#">Privacy</a> &middot; <a href="#">Terms</a> &middot; <a href="#">Site Map</a> &middot;
+    <a href="https://zapatopi.net/treeoctopus/">Pacific Northwest Tree Octopus</a> &middot;
+    <a href="#">Cascadia Wildlife Web Ring</a>
+  </p>
+</div></footer>
+
+<div id="reveal" role="dialog" aria-label="Instructor debrief">
+  <div class="inner">
+    <h2>This site is fake. You were the experiment.</h2>
+    <p class="sub">The Olympic fog shrew does not exist. Here is every tell you could have caught, and the check that would have caught it.</p>
+
+    <h3>The one that settles it</h3>
+    <ol>
+      <li><b>The animal is invented.</b> The fog shrew (<em>Sorex sonomae</em>) is real, but it
+          lives in northern California and Oregon, is listed <b>Least Concern</b>, and has
+          exactly <b>two</b> recognized subspecies: <em>sonomae</em> and <em>tenelliodus</em>.
+          There is no <em>olympicus</em>, and no population in Washington. One search of a
+          taxonomic database (GBIF, ITIS, or the IUCN Red List) ends this in ninety seconds.</li>
+    </ol>
+
+    <h3>The photographs</h3>
+    <ol start="2">
+      <li><b>Every photo is a different animal.</b> They are real shrews, photographed by
+          someone else, somewhere else, and relabeled with invented dates, weights and
+          transect names. A convincing photograph proves that <em>an</em> animal exists, never
+          that <em>this</em> animal exists. Drag any of them into Google Images or TinEye and
+          see where they came from. This is the most useful habit on the list.</li>
+      <li><b>The captions do the lying, not the images.</b> "Adult female, 9.1 g, Pysht
+          Bottomland, September 2024" is unverifiable precision attached to a picture that
+          cannot confirm any part of it. Read captions as claims, not labels.</li>
+      <li><b>"Do not reproduce without permission" is doing rhetorical work.</b> A copyright
+          warning makes an image feel institutionally owned. It costs nothing to type.</li>
+    </ol>
+
+    <h3>Sourcing failures</h3>
+    <ol start="5">
+      <li><b>The journal citation does not resolve.</b> <em>Journal of Mammalogy</em> is a
+          real, respected journal. That article is not in it, and the DOI leads nowhere. A
+          citation that looks correct is not the same as one that exists. Click it.</li>
+      <li><b>Everything else cites itself.</b> Two of the three references are OFSRI's own
+          bulletins. When an organization is the only source for its own central claim, you
+          have one source, not three.</li>
+      <li><b>No independent coverage exists.</b> The site says so outright and frames it as a
+          reason to help rather than a reason to doubt. A subspecies facing extinction
+          generates agency documents, university press releases, and news coverage.</li>
+      <li><b>"As featured in" is not a link.</b> Three publication names, none clickable,
+          none searchable. Real coverage gets linked, because linking it is the point.</li>
+    </ol>
+
+    <h3>Claims that contradict themselves</h3>
+    <ol start="9">
+      <li><b>The numbers never reconcile.</b> 397 animals, but the transect table sums to 80
+          captures across five sites, with no modeling shown that could bridge the two. A
+          number that precise implies work nobody will let you see.</li>
+      <li><b>"501(c)(3)" is checkable and false.</b> Nonprofit status is public record in the
+          IRS Tax Exempt Organization Search. A status that does not appear in the registry
+          that would contain it is a fabricated status.</li>
+      <li><b>Copyright 2019, "last updated August 2026."</b> Sites that are actively
+          maintained usually maintain the footer too.</li>
+    </ol>
+
+    <h3>Evidence that avoids being evidence</h3>
+    <ol start="12">
+      <li><b>Precision as a costume.</b> 74% drop, 0.67 per hundred trap-nights, 61%
+          contraction, 20&ndash;30 cm of fog drip. Decimals feel like rigor. None of it traces
+          to anything you can open. Specificity is not verification.</li>
+      <li><b>Credentials with nothing behind them.</b> Dr. Marian Osterhout, doctorate in
+          what, from where? Straits Field Ecology Station has no independent existence. Look
+          up the person and the institution separately.</li>
+      <li><b>Partners that are just text.</b> Four organizations, zero links. Real
+          partnerships are reciprocal. The partner's site names you back.</li>
+      <li><b>The urgency is doing work.</b> A deadline, a donate button, and a petition all
+          sit above the evidence. Pressure to act before you verify is itself information.</li>
+      <li><b>View the source.</b> There is a comment at the top of the HTML saying the whole
+          thing is fictional. Ctrl+U in most browsers. Checking how a page was made is a
+          research skill.</li>
+    </ol>
+
+    <h3>The actual lesson</h3>
+    <p>
+      The tree octopus is easy because it is absurd. This one is not absurd, and that is the
+      point. Real misinformation is plausible, well made, internally coherent for the first
+      thirty seconds, illustrated with genuine photographs of the wrong thing, and it wants
+      something from you. You cannot catch it by how it feels. You catch it by leaving the
+      page.
+    </p>
+    <p>
+      If a tool told you this was fake and you talked yourself out of it, notice that. Being
+      talked out of a correct answer is its own failure mode, and the fix is the same. Go
+      check, and let the check decide.
+    </p>
+    <button class="close" type="button" onclick="location.hash='';document.getElementById('reveal').classList.remove('on')">Close debrief</button>
+  </div>
+</div>
+
+<script>
+  function checkReveal(){
+    var on = location.hash.toLowerCase() === '#reveal';
+    document.getElementById('reveal').classList.toggle('on', on);
+    if (on) window.scrollTo(0,0);
+  }
+  window.addEventListener('hashchange', checkReveal);
+  checkReveal();
+</script>
+
+</body>
+</html>
